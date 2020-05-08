@@ -1,0 +1,162 @@
+%---------------------------------------------------------------------------%
+%-                                                                         -%
+%-                           LaTeX Template                                -%
+%-                                                                         -%
+%---------------------------------------------------------------------------%
+%- Copyright (C) Huangrui Mo <huangrui.mo@gmail.com> 
+%- This is free software: you can redistribute it and/or modify it
+%- under the terms of the GNU General Public License as published by
+%- the Free Software Foundation, either version 3 of the License, or
+%- (at your option) any later version.
+%---------------------------------------------------------------------------%
+%->> Document class declaration
+%---------------------------------------------------------------------------%
+\documentclass[doublesided%,fontset=%adobe%fandol
+,12pt]{Style/ucasthesis}%
+%- Multiple optional arguments:
+%- [<singlesided|doublesided|printcopy>]% set one or two sided eprint or print
+%- [showmj]% show confidential information
+%- [draftversion]% show draft version information
+%- [fontset=<fandol|...>]% specify font set to replace automatic detection
+%- [scheme=plain]% thesis writing of international students
+%- [standard options for ctex book class: draft|paper size|font size|...]%
+%---------------------------------------------------------------------------%
+%->> Document settings
+%---------------------------------------------------------------------------%
+\usepackage[super,myhdr,list]{Style/artratex}% document settings
+%- usage: \usepackage[option1,option2,...,optionN]{artratex}
+%- Multiple optional arguments:
+%- [bibtex|biber]% set bibliography processor and package
+%- [<numbers|super|authoryear|alpha>]% set citation and reference style
+%- <numbers>: textual: Jones [1]; parenthetical: [1]
+%- <super>: textual: Jones superscript [1]; parenthetical: superscript [1]
+%- <authoryear>: textual: Jones (1995); parenthetical: (Jones, 1995)
+%- <alpha>: textual: not available; parenthetical: [Jon95]
+%- [geometry]% reconfigure page layout via geometry package
+%- [lscape]% provide landscape layout environment
+%- [myhdr]% enable header and footer via fancyhdr package
+%- [color]% provide color support via xcolor package
+%- [background]% enable page background
+%- [tikz]% provide complex diagrams via tikz package
+%- [table]% provide complex tables via ctable package
+%- [list]% provide enhanced list environments for algorithm and coding
+%- [math]% enable some extra math packages
+\usepackage{Style/artracom}% user defined commands
+\usepackage{appendix}
+\usepackage{pdfpages}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amsmath}
+%\usepackage{bicaption} % package for binary captions
+%\captionsetup[figure][bi-second]{name=Figure} % the second figure caption name
+%\captionsetup[table][bi-second]{name=Table} % the second table caption name
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+\renewcommand{\contentsname}{目录\vspace{2cm}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theequation}{ A.\arabic{equation}}%设置附录中公式显示样式
+\setcounter{tocdepth}{3}           %增加目录深度
+\setcounter{secnumdepth}{3}        %增加编号深度
+       
+%---------------%此处代码为修改目录层次显示不合适问题--------      
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{2}{1.8em}{1.2em}}
+\renewcommand*\l@subsection{\@dottedtocline{3}{3.2em}{1.2em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{4}{5.2em}{1.2em}}
+\makeatother
+%--------------------数学环境——————————————————————————————————————————-
+\newtheorem{theorem}{\hspace{2em}定理} [section]
+\newtheorem{axiom}{\hspace{2em}公理} [section]
+\newtheorem{lemma}{\hspace{2em}引理}[section]
+\newtheorem{corollary}[]{\hspace{2em}推论}[section]
+\newtheorem{assertion}{\hspace{2em}断言}[section]
+\newtheorem{proposition}{\hspace{2em}命题} [section]
+%\newtheorem{proof}{\hspace{2em}证明} 
+\newtheorem{definition}{\hspace{2em}定义}
+\newtheorem{example}{\hspace{2em}例子} [section]
+\newtheorem{remark}{\hspace{2em}注}[section]
+%-
+%-----------------------设置默认字体和行距----------------
+\usepackage{xeCJK}   %中文字体
+\setCJKfamilyfont{kaitibold}{Kaiti SC Bold}
+\newcommand{\kaitiB}{\CJKfamily{kaitibold}}   %楷体加粗
+\setCJKfamilyfont{heitibold}{Source Han Sans CN}
+\newcommand{\heitiB}{\CJKfamily{heitibold}}   %黑体加粗
+\setCJKfamilyfont{songtibold}{Songti SC}
+\newcommand{\songtiB}{\CJKfamily{songtibold}}   %宋体加粗
+ \zihao{-4}\linespread{1.067}\selectfont
+ %-------------------设置字体大小--------------
+ %   命令  	大小(bp)     	意义
+ %\zihao{0} 	42      	初号
+ %\zihao{-0}	36          小初
+ % \zihao{1}	26        	一号
+ % \zihao{-1}	24      	小一
+ % \zihao{2}	22      	二号
+ % \zihao{-2}	18      	小二
+ % \zihao{3}	16	        三号
+ % \zihao{-3}	15	        小三
+ % \zihao{4}	14      	四号
+ % \zihao{-4}	12      	小四
+ % \zihao{5}	10.5      	五号
+ % \zihao{-5}	9         	小五
+ % \zihao{6}	7.5	        六号
+ % \zihao{-6}	6.5	        小六
+ % \zihao{7}	5.5     	七号
+ % \zihao{8}	5   	    八号
+ 
+
+
+%---------------------------------------------------------------------------%
+%------------定义页面大小----------------
+%\usepackage{geometry}\geometry{	a4paper,	total={170mm,257mm},	left=20mm,	top=20mm,}
+%->> Document inclusion
+%---------------------------------------------------------------------------%
+%\includeonly{Tex/Chap_1,...,Tex/Chap_N}% selected files compilation
+%---------------------------------------------------------------------------%
+%->> Document content
+%---------------------------------------------------------------------------%
+\begin{document}
+%-
+%-> Frontmatter: title page, abstract, content list, symbol list, preface
+%-
+\frontmatter% initialize the environment
+\input{Tex/Frontpages}% 摘要在这里修改
+{% content list region
+\linespread{1.2}% local line space
+%
+\tableofcontents% 显示目录
+%\intotoc{\listfigurename}% 这里决定论文中是否显示图片索引
+%\listoffigures% figures catalog
+%\intotoc{\listtablename}% 这里决定论文中是否显示图表索引
+%\listoftables% tables catalog
+}
+%\input{Tex/Prematter}% 这里决定论文中是否显示符号列表，对应文件可添加符号
+%-
+%-> Mainmatter
+%-
+\mainmatter% initialize the environment
+\input{Tex/Mainmatter}% main content
+%-
+%-> Appendix
+%-
+%\cleardoublepage%
+%\appendix% initialize the environment
+%\input{Tex/Appendix}% appendix content
+%-
+%-> Backmatter: bibliography, glossary, index
+%-
+\backmatter% initialize the environment
+%-
+%\appendix% initialize the environment  ------如果要求附录在参考文献前面，则打开这个开关
+%\input{Tex/Appendix}% appendix content
+%-
+\intotoc{\bibname}% add link to contents table and bookmark
+%\input{Tex/reference}% other information
+\bibliography{Biblio/ref}% bibliography
+\input{Tex/Backmatter}% other information
+\end{document}
+%---------------------------------------------------------------------------%
+
